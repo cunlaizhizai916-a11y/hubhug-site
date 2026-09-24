@@ -1,0 +1,109 @@
+/* HubHug v6 — 明るい版（../assets/style.css の上から重ねる）
+   白・クリーム・空色を地に、差し色はオレンジ。紺は「文字」と「要所の面」にだけ残す。 */
+:root{
+  --navy:#2563b0; --blue:#1d4f93; --deep:#1d3f73;
+  --ivory:#fff6ea; --paper:#ffffff; --sky:#eaf3fc;
+  --brass:#ee8a33; --brass-l:#ee8a33;
+  --ink:#1f2b40; --mute:#58637a; --line:#e7e1d5;
+}
+body{background:#fff;color:var(--ink)}
+
+/* header */
+.hd{color:var(--ink)}
+.hd.solid{background:rgba(255,255,255,.95);box-shadow:0 1px 0 var(--line),0 8px 24px -18px rgba(31,43,64,.35)}
+.gnav .cta{border-color:var(--brass);background:var(--brass);color:#fff}
+.gnav .cta:hover{background:#d97621;color:#fff}
+.gnav a::after{background:var(--brass)}
+.hamb i{background:var(--ink)}
+.drawer{background:rgba(255,255,255,.98);color:var(--ink)}
+.drawer a{border-bottom-color:var(--line)}
+.drawer a small{color:var(--navy)}
+
+/* buttons */
+.btn:hover{background:#d97621;border-color:#d97621}
+.btn.ghost{color:var(--ink);border-color:rgba(31,43,64,.35)}
+.btn.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.eyebrow{color:var(--navy)}.eyebrow::before{background:var(--navy)}
+.shead .en{color:var(--navy)}.shead .en::before{background:var(--navy)}
+
+/* home hero：朝の光 */
+.hero{background:linear-gradient(160deg,#fff8ec 0%,#fdf1e0 38%,#e7f1fc 100%);color:var(--ink)}
+.hero .bg{background:radial-gradient(60% 60% at 80% 30%,rgba(255,214,150,.55),transparent 70%),radial-gradient(50% 50% at 10% 90%,rgba(168,205,245,.45),transparent 70%)}
+.hero .ph{display:none}
+.hero .gtx{color:rgba(37,99,176,.06)}
+.hero .sub{opacity:1;color:var(--mute)}
+.heroart{position:absolute;right:7vw;bottom:0;width:min(33vw,440px);aspect-ratio:3/4.3;border-radius:999px 999px 0 0;overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(37,99,176,.45)}
+.heroart svg{width:100%;height:100%}
+.heroart .sun{position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,226,170,.9),rgba(255,226,170,0) 70%)}
+.scrollcue{color:var(--ink)}.scrollcue::after{background:linear-gradient(var(--ink),transparent)}
+.hero .in{max-width:calc(100% - 96px)}
+@media(min-width:961px){.hero h1{max-width:12.5em}.hero .sub{max-width:28em}.hero .in{padding-right:min(38vw,500px)}}
+
+/* sub page hero */
+.phero{background:linear-gradient(160deg,#fff8ec 0%,#eaf3fc 100%);color:var(--ink)}
+.phero .gtx{color:rgba(37,99,176,.07)}
+.phero p{opacity:1;color:var(--mute)}
+.phero .ph.has{left:auto;width:52%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%);filter:brightness(1.15) saturate(1.05)}
+.phero .ph::after{background:linear-gradient(0deg,rgba(255,248,236,.35),transparent 60%)}
+.phero .wrap{position:relative;z-index:1}
+.crumb{opacity:.7}
+
+/* 暗い帯セクション → 空色・クリームの面へ */
+.sec.navy{background:var(--sky);color:var(--ink)}
+.sec.deep{background:var(--ivory);color:var(--ink)}
+.secph{display:none}
+.navy .shead .en,.deep .shead .en{color:var(--navy)}
+.navy .shead .en::before,.deep .shead .en::before{background:var(--navy)}
+.navy .shead p,.deep .shead p{color:var(--mute)}
+.navy .more,.deep .more{color:var(--navy)}
+.hasph .flow>div,.flow>div{background:#fff;border-color:var(--line);backdrop-filter:none;box-shadow:0 14px 30px -24px rgba(37,99,176,.5)}
+.flow .k{color:var(--brass)}
+.flow p{color:var(--mute)}
+.hasph .nums>div,.nums>div{background:#fff;border-color:var(--line)}
+.nums .n{color:var(--navy)}
+.nums .n small{color:var(--ink)}
+.nums .t{color:var(--mute)}
+.srcnote{color:var(--mute)}
+.road .k{color:var(--brass)}.road>div{border-top-color:var(--brass)}.road p{opacity:1;color:var(--mute)}
+
+/* カード */
+.pcard .top{background:linear-gradient(135deg,#9cc4ef,#2563b0)}
+.pcard .top .ph.has{filter:brightness(1.18) saturate(1.08)}
+.pcard .top .ph::after{background:linear-gradient(0deg,rgba(29,63,115,.55),transparent 55%)}
+.pcard:hover{box-shadow:0 24px 50px -24px rgba(37,99,176,.45);border-color:var(--brass)}
+.more{color:var(--navy)}.more::after{background:var(--brass)}
+.archfig{background:linear-gradient(180deg,#9cc4ef,#eaf3fc)}
+.archfig .ph.has{filter:brightness(1.12)}
+.archfig .ph.has::after{background:none}
+.photo{background:linear-gradient(135deg,#9cc4ef,#eaf3fc)}
+.photo .ph.has,.svc .ph.has{filter:brightness(1.15) saturate(1.05)}
+
+/* 要所の面（青） */
+.tbl thead th{background:var(--navy)}
+.tbl tbody th{background:var(--sky)}
+.tbl .hl{background:#fff1df}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#fff3e2 0%,#fde6cc 45%,#e3effc 100%);color:var(--ink)}
+.cta::before{background:linear-gradient(180deg,rgba(255,255,255,.7),transparent 80%)}
+.cta p{opacity:1;color:var(--mute)}
+
+/* footer・追従バー */
+.ft{background:#f3f7fc;color:var(--ink)}
+.ft .top{border-bottom-color:var(--line)}
+.ft nav h5{color:var(--brass)}
+.ft nav a{opacity:.85}
+.ft .btm{opacity:.7}
+.spbar{background:rgba(255,255,255,.96);box-shadow:0 -1px 0 var(--line)}
+.spbar .a{border-color:rgba(31,43,64,.3);color:var(--ink)}
+.spbar .b{color:#fff}
+
+@media(max-width:960px){
+  .hero{flex-direction:column;justify-content:flex-end;padding-top:84px}
+  .heroart{position:relative;right:auto;bottom:auto;align-self:flex-end;width:40%;max-width:190px;margin:0 22px 8px auto}
+  .hero{min-height:auto}.hero .in{padding-bottom:56px}
+  .hero .in{max-width:none;padding-bottom:64px}
+  .phero .ph.has{width:100%;opacity:.35;-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%);mask-image:linear-gradient(180deg,transparent,#000 60%)}
+}
