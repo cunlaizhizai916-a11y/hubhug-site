@@ -1,0 +1,16 @@
+# v6 明るい版の写真（Unsplash License・商用可・クレジット表記不要） 2026-09-24取得
+hero.jpg         https://images.unsplash.com/photo-1633944241961-e511ab23455f  植物のある明るいカフェ
+card-chef.jpg    https://images.unsplash.com/photo-1778634304534-6629b945ee26  笑顔の料理人
+card-owner.jpg   https://images.unsplash.com/photo-1556742393-d75f468bfcb0  明るいカウンターの店主
+card-bldg.jpg    https://images.unsplash.com/photo-1785900204149-731e6c20d4fe  青空の商店街
+scheme.jpg       https://images.unsplash.com/photo-1758518730384-be3d205838e8  握手（契約）
+about.jpg        https://images.unsplash.com/photo-1621343607959-5d11ff0f1e39  明るいカフェ店内
+service.jpg      https://images.unsplash.com/photo-1689037676470-b72230d5236e  明るいベーカリーカフェ
+scheme-hero.jpg  https://images.unsplash.com/photo-1758520144427-ddb02ac74e9d  契約の場面
+chefs.jpg        https://images.unsplash.com/photo-1758522484068-4ba2b78add9e  明るいキッチン
+owners.jpg       https://images.unsplash.com/photo-1516197370049-569c4eaba1d6  カウンターの接客
+contact.jpg      https://images.unsplash.com/photo-1685602729695-0664ea4e5c06  白い明るいカフェ
+svc1.jpg         https://images.unsplash.com/photo-1609559376775-38cdfa504de1  厨房の料理人
+svc2.jpg         https://images.unsplash.com/photo-1775637659246-a508a5baa4eb  昼の店先
+svc3.jpg         https://images.unsplash.com/photo-1565057036783-a8bc182d1aee  明るい空き区画
+landlord.jpg     https://images.unsplash.com/photo-1713263367828-9eafd7fc3797  青空の街並み

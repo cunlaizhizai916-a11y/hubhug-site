@@ -27,9 +27,12 @@ body{background:#fff;color:var(--ink)}
 .shead .en{color:var(--navy)}.shead .en::before{background:var(--navy)}
 
 /* home hero：朝の光 */
-.hero{background:linear-gradient(160deg,#fff8ec 0%,#fdf1e0 38%,#e7f1fc 100%);color:var(--ink)}
+.hero{background:linear-gradient(160deg,#fff8ec 0%,#fdf1e0 38%,#e7f1fc 100%);color:var(--ink);padding-top:120px}
 .hero .bg{background:radial-gradient(60% 60% at 80% 30%,rgba(255,214,150,.55),transparent 70%),radial-gradient(50% 50% at 10% 90%,rgba(168,205,245,.45),transparent 70%)}
-.hero .ph{display:none}
+.hero>.ph{display:none}
+.heroart .ph{position:absolute;inset:0;background-size:cover;background-position:center;z-index:1}
+.heroart .sun{z-index:2}
+.hero .heroart .ph::after{display:none}.hero .heroart .ph{opacity:1}
 .hero .gtx{color:rgba(37,99,176,.06)}
 .hero .sub{opacity:1;color:var(--mute)}
 .heroart{position:absolute;right:7vw;bottom:0;width:min(33vw,440px);aspect-ratio:3/4.3;border-radius:999px 999px 0 0;overflow:hidden;
@@ -45,7 +48,7 @@ body{background:#fff;color:var(--ink)}
 .phero{background:linear-gradient(160deg,#fff8ec 0%,#eaf3fc 100%);color:var(--ink)}
 .phero .gtx{color:rgba(37,99,176,.07)}
 .phero p{opacity:1;color:var(--mute)}
-.phero .ph.has{left:auto;width:52%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%);filter:brightness(1.15) saturate(1.05)}
+.phero .ph.has{left:auto;width:52%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%);mask-image:linear-gradient(90deg,transparent,#000 45%)}
 .phero .ph::after{background:linear-gradient(0deg,rgba(255,248,236,.35),transparent 60%)}
 .phero .wrap{position:relative;z-index:1}
 .crumb{opacity:.7}
@@ -70,15 +73,12 @@ body{background:#fff;color:var(--ink)}
 
 /* カード */
 .pcard .top{background:linear-gradient(135deg,#9cc4ef,#2563b0)}
-.pcard .top .ph.has{filter:brightness(1.18) saturate(1.08)}
-.pcard .top .ph::after{background:linear-gradient(0deg,rgba(29,63,115,.55),transparent 55%)}
+.pcard .top .ph::after{background:linear-gradient(0deg,rgba(29,63,115,.45),transparent 45%)}
 .pcard:hover{box-shadow:0 24px 50px -24px rgba(37,99,176,.45);border-color:var(--brass)}
 .more{color:var(--navy)}.more::after{background:var(--brass)}
 .archfig{background:linear-gradient(180deg,#9cc4ef,#eaf3fc)}
-.archfig .ph.has{filter:brightness(1.12)}
 .archfig .ph.has::after{background:none}
 .photo{background:linear-gradient(135deg,#9cc4ef,#eaf3fc)}
-.photo .ph.has,.svc .ph.has{filter:brightness(1.15) saturate(1.05)}
 
 /* 要所の面（青） */
 .tbl thead th{background:var(--navy)}
