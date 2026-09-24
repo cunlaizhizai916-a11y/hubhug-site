@@ -38,12 +38,12 @@ a{color:inherit;text-decoration:none}
 .card h4{font-family:var(--serif);font-weight:600;font-size:18px;margin:6px 0 8px;line-height:1.5}
 .card p{font-size:13px;line-height:1.85;color:#3a4150}
 .card.l{left:6vw;top:16vh}.card.r{right:6vw;bottom:14vh}
-.tx.co{width:min(640px,80vw)}
-@media(min-width:821px){.tx.co{margin-left:14vw}}
-.face{width:min(300px,52vw);aspect-ratio:1;border-radius:50%;background:#fff center top/cover no-repeat;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.tx.co{width:min(1000px,90vw);display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:center;text-align:left}
+.tx.co p{margin-left:0}.tx.co .btn{margin-left:0;margin-right:10px}
+.face{width:240px;aspect-ratio:1;border-radius:50%;background:#fff center top/cover no-repeat;box-shadow:0 30px 70px -30px rgba(0,0,0,.9);border:4px solid rgba(244,241,234,.9)}
 
 /* chrome */
-.hd{position:fixed;inset:0 0 auto 0;z-index:20;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;mix-blend-mode:difference}
+.hd{position:fixed;inset:0 0 auto 0;z-index:6;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;mix-blend-mode:difference}
 .hd b{font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:.08em}
 .hd a.c{font-size:12px;letter-spacing:.2em;border:1px solid #fff;padding:9px 18px}
 .rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:14px}
@@ -68,7 +68,7 @@ a{color:inherit;text-decoration:none}
 .foot{position:relative;z-index:5;background:var(--paper);color:var(--ink);padding:28px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;letter-spacing:.08em}
 
 @media(max-width:820px){
-  .face{width:34vw;top:12vh!important}
+  .tx.co{grid-template-columns:1fr;gap:18px;text-align:center}.face{width:120px;margin:0 auto}.tx.co .btn{margin:10px 0 0}.tx.co p{font-size:14px;line-height:1.9}
   .hd{padding:0 18px;height:60px}.hd b{font-size:20px}
   .card.l{left:5vw;top:13vh}.card.r{right:5vw;bottom:12vh}.card{width:min(260px,62vw);padding:16px}
   .rail{right:12px}
@@ -161,12 +161,14 @@ a{color:inherit;text-decoration:none}
   <!-- 7 company / contact -->
   <section class="scene" data-i="7" id="contact">
     <div class="plane bg" data-z="-600" data-img="company" style="background-image:url(../assets/img/about.jpg)"></div>
-    <div class="plane face" data-z="-240" style="background-image:url(../assets/img/portrait.jpg);left:6vw;top:22vh"></div>
     <div class="plane tx co" data-z="0">
-      <div class="k">COMPANY</div>
-      <div class="t"><span class="np">株式会社HubHug</span></div>
-      <p>代表 青枝 実樹。店舗開発・飲食特化の財務・不動産仲介の実務10年以上。家主公認の店舗開発 累計350店舗、大手飲食グループ大阪支店の立ち上げから約2年で180店舗。2026年11月設立予定、大阪市。</p>
-      <a class="btn f" href="../contact.html?type=chef">開業希望者</a><a class="btn" href="../contact.html?type=owner">店舗オーナー</a><a class="btn" href="../contact.html?type=landlord">家主・管理会社</a>
+      <div class="face" style="background-image:url(../assets/img/portrait.jpg)"></div>
+      <div class="cot">
+        <div class="k">COMPANY</div>
+        <div class="t"><span class="np">株式会社HubHug</span></div>
+        <p>代表 青枝 実樹。店舗開発・飲食特化の財務・不動産仲介の実務10年以上。家主公認の店舗開発 累計350店舗、大手飲食グループ大阪支店の立ち上げから約2年で180店舗。2026年11月設立予定、大阪市。</p>
+        <a class="btn f" href="../contact.html?type=chef">開業希望者</a><a class="btn" href="../contact.html?type=owner">店舗オーナー</a><a class="btn" href="../contact.html?type=landlord">家主・管理会社</a>
+      </div>
     </div>
   </section>
 
@@ -209,7 +211,7 @@ a{color:inherit;text-decoration:none}
   function render(){
     if(reduce)return;
     /* each scene holds still for HOLD of its segment, then travels to the next */
-    var HOLD=0.62, u=Math.min(Math.max(scrollY/scrollMax(),0),1)*(N-1), i0=Math.min(Math.floor(u),N-2), f=u-i0;
+    var HOLD=0.32, u=Math.min(Math.max(scrollY/scrollMax(),0),1)*(N-1), i0=Math.min(Math.floor(u),N-2), f=u-i0;
     var t=f<HOLD?0:(f-HOLD)/(1-HOLD); t=t*t*(3-2*t);                 // smoothstep on the travel part
     var p=i0+t;
     world.style.transform='translateZ('+(p*DEPTH)+'px)';
@@ -223,7 +225,7 @@ a{color:inherit;text-decoration:none}
     var cur=Math.round(p);
     [].slice.call(rail.children).forEach(function(a,i){a.classList.toggle('on',i===cur)});
     cue.classList.toggle('off',scrollY>innerHeight*.4);
-    stage.style.opacity=scrollY>=scrollMax()-2?0:1;
+
   }
   addEventListener('scroll',render,{passive:true});addEventListener('resize',render);render();
   document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){
