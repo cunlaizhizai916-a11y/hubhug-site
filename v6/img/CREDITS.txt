@@ -1,16 +1,16 @@
-# v6 明るい版の写真（Unsplash License・商用可・クレジット表記不要） 2026-09-24取得
-about.jpg        https://images.unsplash.com/photo-1585838202106-367f72a817a7  蔦のカフェテラス（日本）
+# v6 明るい版の写真（Unsplash License・商用可・クレジット表記不要） 2026-09-25更新
+about.jpg        https://images.unsplash.com/photo-1784504866714-a88dbe8598bf  大衆酒場の店先と客
 card-bldg.jpg    https://images.unsplash.com/photo-1785900204149-731e6c20d4fe  青空の商店街
-card-chef.jpg    https://images.unsplash.com/photo-1583394293214-28ded15ee548  腕組みの料理人（日本）
-card-owner.jpg   https://images.unsplash.com/photo-1773051428447-019cc31e4c6f  明るいカフェのカウンター（日本）
-chefs.jpg        https://images.unsplash.com/photo-1700367059983-ee8a28689971  寿司職人（日本）
-contact.jpg      https://images.unsplash.com/photo-1651114992490-1e3815bab5ea  窓辺の植物（日本）
-hero.jpg         https://images.unsplash.com/photo-1626154984793-708ab402f1c8  路地の緑のカフェ（日本）
+card-chef.jpg    https://images.unsplash.com/photo-1640672927603-9eb502f674a0  厨房で働く若いスタッフ2人
+card-owner.jpg   https://images.unsplash.com/photo-1752135534175-44aa59a1bb50  寿司カウンターの職人
+chefs.jpg        https://images.unsplash.com/photo-1761933921061-2ac8018dbe96  活気ある厨房
+contact.jpg      https://images.unsplash.com/photo-1786113706143-96b4a62ebb71  友人同士の食事
+hero.jpg         https://images.unsplash.com/photo-1753622118655-136a65245d89  賑わう居酒屋のカウンター
 landlord.jpg     https://images.unsplash.com/photo-1700228675976-8bd9d90528ee  青空のビル街（東京）
-owners.jpg       https://images.unsplash.com/photo-1785758005157-442e4d4ae87f  カウンター越しの接客（日本）
+owners.jpg       https://images.unsplash.com/photo-1600259921943-dd76e768f0f5  カウンター越しの店主と客
 scheme-hero.jpg  https://images.unsplash.com/photo-1732906364920-4708eacfc9ab  角地の建物と青空（日本）
 scheme.jpg       https://images.unsplash.com/photo-1675158006978-ee14892e7650  白い建物の路面店（日本）
-service.jpg      https://images.unsplash.com/photo-1646973904681-d6eca4583c9a  小さなカフェのカウンター（日本）
-svc1.jpg         https://images.unsplash.com/photo-1609559376775-38cdfa504de1  厨房の料理人
+service.jpg      https://images.unsplash.com/photo-1788247688143-e3c56704bca4  カウンターで働く若いスタッフと客
+svc1.jpg         https://images.unsplash.com/photo-1580679630536-a997fa14f618  窓辺の厨房で調理する若手
 svc2.jpg         https://images.unsplash.com/photo-1649985396968-094ecbf96076  ベーカリーの店先（日本）
 svc3.jpg         https://images.unsplash.com/photo-1565057036783-a8bc182d1aee  明るい空き区画
