@@ -1,4 +1,4 @@
-# v6 明るい版の写真（Unsplash License・商用可・クレジット表記不要） 2026-09-25更新
+# v6 明るい版の写真（Unsplash License・商用可・クレジット表記不要） 2026-09-27更新
 about.jpg        https://images.unsplash.com/photo-1784504866714-a88dbe8598bf  大衆酒場の店先と客
 card-bldg.jpg    https://images.unsplash.com/photo-1785900204149-731e6c20d4fe  青空の商店街
 card-chef.jpg    https://images.unsplash.com/photo-1640672927603-9eb502f674a0  厨房で働く若いスタッフ2人
@@ -14,3 +14,5 @@ service.jpg      https://images.unsplash.com/photo-1788247688143-e3c56704bca4  �
 svc1.jpg         https://images.unsplash.com/photo-1580679630536-a997fa14f618  窓辺の厨房で調理する若手
 svc2.jpg         https://images.unsplash.com/photo-1649985396968-094ecbf96076  ベーカリーの店先（日本）
 svc3.jpg         https://images.unsplash.com/photo-1565057036783-a8bc182d1aee  明るい空き区画
+top1.jpg         https://images.unsplash.com/photo-1713970943504-04e8a3e3abac  昼の大衆餃子酒場の店先（トップ大アーチ）
+top2.jpg         https://images.unsplash.com/photo-1706381068085-29fe6c2afe51  笑顔のスタッフ2人（トップ小アーチ）
