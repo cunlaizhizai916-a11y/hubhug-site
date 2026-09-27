@@ -17,7 +17,7 @@ rep = [
     ("<script src=\"assets/site.js\"></script>", "<script src=\"../assets/site.js\"></script>"),
     ('<meta name="theme-color" content="#091730">', '<meta name="theme-color" content="#ffffff">'),
     ("ARCH = arch('night')", "ARCH = arch('day')"),
-    ('<div class="gtx">HubHug</div>', '<div class="gtx">HubHug</div><div class="heroart" aria-hidden="true"><div class="ph" data-img="hero.jpg"></div>{arch("day")}<span class="sun"></span></div>'),
+    ('<div class="gtx">HubHug</div>', '<div class="gtx">HubHug</div><div class="herocol" aria-hidden="true"><span class="blob"></span><div class="hc c1"><div class="ph" data-img="hero.jpg"></div></div><div class="hc c2"><div class="ph" data-img="card-chef.jpg"></div></div><div class="hc c3"><div class="ph" data-img="service.jpg"></div></div><div class="hbadge"><small>家主公認の店舗開発</small><b>350<i>店舗超</i></b></div><div class="htag">朝・昼・夜で<br>一つの店を分け合う</div></div>'),
     ("""        if os.path.exists(os.path.join(HERE, 'assets/img', f)):
             return 'class="ph%s has" style="background-image:url(assets/img/%s)"' % (extra, f)""",
      """        if os.path.exists(os.path.join(HERE, 'img', f)):
