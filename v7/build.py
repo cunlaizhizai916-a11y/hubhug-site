@@ -185,6 +185,7 @@ def page(fn, title, desc, body):
 <title>{title}</title><meta name="description" content="{desc}">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:type" content="website">
 <meta name="theme-color" content="#ffffff">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232451c6'/%3E%3Cpath d='M9 26V15a7 7 0 0 1 14 0v11' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -206,22 +207,25 @@ def page(fn, title, desc, body):
 
 
 # =========================================================== index
-# 設立前の会社なので、信頼の根拠は「代表の顔と実績」「家主公認の仕組み」「数字の開示」。
-# 1画面目で「何の会社か（朝・昼・夜で店を分け合う）」「誰がやるか（代表の顔）」「次の一歩（相談）」を出す。
-def aud(href, q, image, alt, icon, tag, h, num, items, act):
-    return f'''<article class="aud-card"><figure>{img(image, alt)}<span class="tag">{ic(icon)}{tag}</span></figure>
-<div class="aud-body"><h3>{np(h)}</h3>{num}{checks(items)}
-<div class="aud-act"><a class="btn filled" href="contact.html{q}">{ic('chat')}{act}</a>{arrow_link(href, '詳しく見る')}</div></div></article>'''
-
-
+# 文字は「見出し＋1行」まで。あとは写真・大きな数字・図で伝え、詳しい説明は下層ページに任せる。
 def hx_photo(image, alt, icon, label, cap, pos='center'):
     return f'''<li><figure>{img(image, alt, True).replace('<img ', f'<img style="object-position:{pos}" ', 1)}
 <figcaption><span class="tchip">{ic(icon)}{label}</span><span class="cap">{cap}</span></figcaption></figure></li>'''
 
 
-def journey(no, k, image, alt, h, p):
-    return f'''<li><figure>{img(image, alt)}</figure><div class="jb"><div class="jh"><span class="no">{no}</span><span class="k">{k}</span></div>
-<h3>{h}</h3><p>{p}</p></div></li>'''
+def aud(href, image, alt, icon, tag, h, big):
+    return f'''<a class="aud-tile rv" href="{href}"><figure>{img(image, alt)}</figure><span class="tag">{ic(icon)}{tag}</span>
+<div class="ov-body"><h3>{np(h)}</h3><p class="big">{big}</p></div><span class="go" aria-hidden="true">{ic('arrow')}</span></a>'''
+
+
+def flow(no, k, image, alt, h, p):
+    return f'''<li class="rv"><figure>{img(image, alt)}<span class="no">{no}</span></figure>
+<div><span class="k">{k}</span><h3>{h}</h3><p>{p}</p></div></li>'''
+
+
+def kpi(num, pre, unit, label):
+    pre_html = f'<small>{pre}</small>' if pre else ''
+    return f'<li class="rv"><div class="v">{pre_html}<b class="count" data-to="{num}">{num}</b><small>{unit}</small></div><span>{ph(label)}</span></li>'
 
 
 FAQ = [
@@ -232,7 +236,6 @@ FAQ = [
     ('やむを得ず|撤退することに|なったら？', '造作・設備の価値を査定し、造作譲渡（居抜き売却）で譲渡先を探します。原状回復費用を抑え、手元に資金を残して次の挑戦へ進めるよう支援します。'),
     ('問い合わせたあとの|流れは？', '内容を確認のうえ、3営業日以内に担当者よりご連絡します。やりたい業態や貸し出せる時間帯などを伺い、実現できる形をご提案します。'),
 ]
-
 faq_html = ''.join(f'<details><summary><span class="q">Q</span><span class="t">{ph(q)}</span></summary><p class="a">{a}</p></details>' for q, a in FAQ)
 
 index = f'''
@@ -242,58 +245,50 @@ index = f'''
 <h1 class="display"><span class="np">一つの店を、</span><br><span class="np">時間で</span><span class="np">分け合う。</span></h1>
 </div>
 <div class="hx-side">
-<p class="lead">家主の承諾を得た「間借り」で、初期投資を抑えて開業。営業していない時間を貸す店舗オーナー様には、家賃の補填を。出店から退店まで、一気通貫で伴走します。</p>
+<p class="lead">{ph('空き時間を貸す店と、|店を持ちたい料理人を、|家主公認で|つなぎます。')}</p>
 <div class="btns"><a class="btn filled" href="contact.html">{ic('chat')}無料で相談する</a><a class="btn tonal" href="service.html">サービスを見る</a></div>
 <a class="person" href="about.html#message">{img('portrait.jpg', '代表 青枝 実樹', True)}<span><b>代表　青枝 実樹</b><small>家主公認の店舗 350店舗以上</small></span>{ic('arrow')}</a>
 </div>
 <ul class="hx-photos">
-{hx_photo('am.jpg', '朝：カフェでコーヒーを淹れるスタッフ', 'sunrise', '朝', 'モーニング・コーヒースタンド', '28% center')}
-{hx_photo('noon.jpg', '昼：笑顔で調理する料理人', 'sun', '昼', 'ランチ営業・定食・弁当')}
-{hx_photo('night.jpg', '夜：焼き鳥を焼く料理人', 'moon', '夜・定休日', 'バー営業・一日店長')}
+{hx_photo('am.jpg', '朝：カフェでコーヒーを淹れるスタッフ', 'sunrise', '朝', 'モーニング', '28% center')}
+{hx_photo('noon.jpg', '昼：笑顔で調理する料理人', 'sun', '昼', 'ランチ')}
+{hx_photo('night.jpg', '夜：焼き鳥を焼く料理人', 'moon', '夜・定休日', '居酒屋・バー')}
 </ul>
 </div></section>
 
-<section class="trust"><div class="wrap"><div class="trust-card">
-<p class="trust-lb">代表 青枝が、現場で積み上げてきた実績</p>
-<ul class="kpis">
-<li><div class="v"><b>350</b><small>店舗以上</small></div><span class="t">{ph("家主公認の|適法店舗・|共同出店の|プロデュース累計")}</span></li>
-<li><div class="v"><small>約</small><b>180</b><small>店舗</small></div><span class="t">{ph("大手飲食グループ|大阪支店の|立ち上げから|約2年で展開")}</span></li>
-<li><div class="v"><b>10</b><small>年以上</small></div><span class="t">{ph("店舗開発・|飲食特化の|財務・不動産の|実務経験")}</span></li>
-<li><div class="v"><small>約</small><b>3</b><small>年</small></div><span class="t">{ph("飲食店支援サイトの|関西代理店として、|造作譲渡の|相談・面談を受託")}</span></li>
+<section class="band"><div class="wrap">
+<ul class="kpis2">
+{kpi(350, '', '店舗以上', '家主公認の店舗を|プロデュース')}
+{kpi(180, '約', '店舗', '大手飲食グループの|関西展開に貢献')}
+{kpi(10, '', '年以上', '店舗開発・|財務の実務')}
+{kpi(3, '約', '年', '造作譲渡の|相談を受託')}
 </ul>
-<div class="allies"><p class="trust-lb">開業後も、専門家と一緒に支えます</p><ul><li><span class="role">財務・税務</span>飲食特化の税理士法人グループ</li><li><span class="role">バックオフィス</span>経理代行パートナー</li><li><span class="role">不動産</span>RE/MAX NOW</li><li><span class="role">物件・顧客情報</span>飲食店支援プラットフォーム</li><li><span class="role">コミュニティ</span>外食虎塾大阪</li></ul>{arrow_link('about.html#partners', '連携・支援体制を見る')}</div>
-<p class="note">※実績は代表 青枝の前職・現職を含むキャリア全体での数値です。</p>
-</div></div></section>
+<p class="band-note">※代表 青枝のキャリア全体での数値です。</p>
+</div></section>
 
 <section class="sec"><div class="wrap">
-{sh('立場から選ぶ', 'あなたの立場で、|何が変わるか。', '借りたい方・貸したい方・物件を持つ方。三者それぞれに、具体的なメリットがあります。')}
-<div class="aud">
-{aud('chefs.html', '?type=chef', 'card-chef.jpg', '厨房で働く若いスタッフ', 'chef', '開業したい方', '初期投資を抑えて、/自分の店を。',
-     '<div class="aud-num"><small>月商30万円の場合の試算</small><strong>手残り 約<b>8</b>万円 / 月</strong><span class="fn">間借り料 月10万円・食材原価30%で試算。収益を保証するものではありません。</span></div>',
-     ['内装・厨房は、すでにある店舗を使う', '家主公認だから、突然の退去の心配がない', '実績ができたら、実店舗への独立まで支援'], '開業の相談をする')}
-{aud('owners.html', '?type=owner', 'card-owner.jpg', 'カウンターの職人', 'store', '店舗オーナー', '空いている時間で、/家賃を|軽くする。',
-     '<div class="aud-num"><small>間借り料 月10万円の場合</small><strong>オーナー様の取り分 <b>5</b>万円 / 月</strong><span class="fn">年間60万円。家賃の大きな補填になります。</span></div>',
-     ['借り手の募集から毎月の回収まで、当社が行う', '清掃・設備・ゴミのルールを契約で明確に', '移転・撤退の際は、造作譲渡で支援'], '空き時間の相談をする')}
-{aud('owners.html#landlord', '?type=landlord', 'bldg.jpg', '小さな店が入った角地の建物', 'bldg', '家主・管理会社', '承諾のうえで、/物件の価値を|守る。',
-     '<div class="aud-num"><small>運用するのは</small><strong class="txt">事前に承諾をいただいた物件だけ</strong><span class="fn">知らないうちに又貸しされる状態をなくします。</span></div>',
-     ['利用者・利用時間・責任範囲を契約で把握できる', 'テナントの家賃負担が軽くなり、退去リスクが下がる', '間借りで実績を出した事業者が、次のテナント候補に'], '物件の相談をする')}
-</div></div></section>
+{sh('', 'あなたの立場から。')}
+<div class="aud2">
+{aud('chefs.html', 'card-chef.jpg', '厨房で働く若いスタッフ', 'chef', '開業したい方', '自分の店を、|小さく始める。', '<small>月商30万円の試算で</small>手残り 約<b>8</b>万円')}
+{aud('owners.html', 'card-owner.jpg', 'カウンターの職人', 'store', '店舗オーナー', '空き時間で、|家賃を軽く。', '<small>間借り料10万円なら</small>取り分 月<b>5</b>万円')}
+{aud('owners.html#landlord', 'bldg.jpg', '小さな店が入った角地の建物', 'bldg', '家主・管理会社', '承諾のうえで、|物件を守る。', '<small>運用するのは</small><span class="txt">承諾した物件だけ</span>')}
+</div>
+<p class="note">※試算は間借り料 月10万円・食材原価30%の場合。収益を保証するものではありません。</p>
+</div></section>
 
 <section class="sec tint"><div class="wrap">
-{sh('サービスの全体像', '入り口から出口まで、|一本の線で|伴走する。', '間借りで始め、実績をつくり、自分の店へ。万が一のときも、手元に資金を残して再起できるように。', link=('service.html', 'サービスの詳細と料金を見る'))}
-<ol class="journey">
-{journey('01', '入り口', 'svc1.jpg', '厨房で調理する料理人', '間借りシェア「HubHug」', '既存店舗の朝・昼・夜の空き時間で、初期投資をかけずに開業。テスト販売とファンづくりの場に。')}
-{journey('02', '成長', 'svc2.jpg', 'ベーカリーの店先', '実店舗への出店サポート', '飲食店舗に特化した物件探し、融資・補助金の獲得支援、内装・厨房・仕入れ業者のご紹介まで。')}
-{journey('03', '出口', 'exit.jpg', '設備が残ったままの食堂', '再起型の退店サポート', 'スピーディーな造作譲渡（居抜き売却）で原状回復費用を抑え、手元に資金を残して次の挑戦へ。')}
+{sh('', '入り口から出口まで、|伴走する。', '', link=('service.html', 'サービスと料金を見る'))}
+<ol class="flow3">
+{flow('01', '入り口', 'svc1.jpg', '厨房で調理する料理人', '間借りで始める', '初期投資をかけずに開業')}
+{flow('02', '成長', 'svc2.jpg', 'ベーカリーの店先', '自分の店へ', '物件探しから融資まで支援')}
+{flow('03', '出口', 'exit.jpg', '設備が残ったままの食堂', '資金を残して次へ', '造作譲渡で原状回復費を抑える')}
 </ol></div></section>
 
 <section class="sec"><div class="wrap hubwrap">
-<div>{sh('家主公認', '「無断転貸」の壁を、|正面から|越える。')}
-<div class="prose"><p>店舗の賃貸借契約の多くは、無断での転貸（又貸し）を禁じています。家主に知らせないままの間借りは、発覚すれば即時退去のリスクと隣り合わせです。</p>
-<p>HubHugは、家主・現店舗オーナー・間借り出店者の三者で、公式な承諾と契約を結びます。</p></div>
-{checks(['業務委託または転貸承諾を、家主から公式に取得', '責任の範囲を、契約で明確化', '間借り料は、デポジットと自動振替で当社が管理'])}
+<div class="rv">{sh('家主公認', '「無断転貸」に|しない。')}
+<div class="vs2"><span class="ng">{ic('x')}家主に無断の間借り</span><span class="arw" aria-hidden="true">{ic('arrow')}</span><span class="ok">{ic('check')}三者で公式に合意</span></div>
 {arrow_link('scheme.html', '家主公認スキームを見る')}</div>
-<div class="triad" role="img" aria-label="HubHugが家主・現店舗オーナー・間借り出店者の三者をつなぐ図">
+<div class="triad rv" role="img" aria-label="HubHugが家主・現店舗オーナー・間借り出店者の三者をつなぐ図">
 <svg class="lines" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 60 50 12M50 60 21 96M50 60 79 96"/></svg>
 <div class="nd n1"><span class="ph">{img('bldg.jpg')}</span><b>家主・管理会社</b><small>活用を承諾</small></div>
 <div class="nd core"><span class="ph">{LOGO_W}<b>HubHug</b></span><small>交渉・契約・決済を担う</small></div>
@@ -302,37 +297,19 @@ index = f'''
 </div>
 </div></section>
 
-<section class="sec tint"><div class="wrap"><div class="msg">
+<section class="sec tint"><div class="wrap"><div class="msg msg-s rv">
 <figure class="pf">{img('portrait.jpg', '株式会社HubHug 代表 青枝 実樹')}</figure>
 <div>{sh('代表メッセージ', '飲食業を|好きで始めた人が、/最後まで|好きでいられる|社会を。')}
-<div class="prose"><p>祖父と父は、たこ焼き・お好み焼きの店を営んでいました。飲食業の厳しさは、身をもって知っています。</p>
-<p>店舗開発の現場で、腕と志のある料理人が資金の問題だけで立ち上がれなくなるのを、数多く見てきました。だからこそ、入り口と出口の両方を軽くする仕組みを、自分の手でつくります。</p></div>
+<p class="one">祖父と父は、たこ焼き・お好み焼きの店を営んでいました。</p>
 <p class="sig">株式会社HubHug　代表<b>青枝 実樹</b></p>
-<ol class="path">
-<li><span class="y">2015</span><span class="t">店舗流通ネット（東証プライム上場グループ）で飲食店舗開発</span></li>
-<li><span class="y">2020</span><span class="t">飲食特化の税理士法人グループで財務・融資を支援</span></li>
-<li><span class="y">2023</span><span class="t">RE/MAX NOW エージェントとして活動開始</span></li>
-<li><span class="y">2024</span><span class="t">大手飲食グループ 大阪支店の立ち上げに参画</span></li>
-<li><span class="y">2025</span><span class="t">飲食経営塾「外食虎塾大阪」の事務局</span></li>
-</ol>
-{arrow_link('about.html#message', '代表メッセージと経歴を読む')}</div>
+{arrow_link('about.html#message', 'メッセージと経歴を読む')}</div>
 </div></div></section>
 
-<section class="sec"><div class="wrap">
-{sh('よくあるご質問', 'ご相談の前に、|よく聞かれること。', '', True)}
-<div class="faq">{faq_html}</div>
-</div></section>
-
-<section class="sec pt0"><div class="wrap"><div class="cta2">
+<section class="sec"><div class="wrap"><div class="cta2 rv">
 <figure>{img('tenjinbashi.jpg', '大阪・天神橋筋商店街')}</figure>
-<div class="body"><p class="ov">まずは大阪市内から</p><h2>{np('まずは、|お話を|聞かせてください。')}</h2>
-<p>間借りで始めたい方も、空き時間を活かしたい店舗オーナー様も、物件をお持ちの家主様も。</p>
-<ul class="assure2">
-<li>{ic('check')}<span class="t">ご相談は無料です</span></li>
-<li>{ic('check')}<span class="t">3営業日以内にご返信します</span></li>
-<li>{ic('check')}<span class="t">しつこい営業はいたしません</span></li>
-</ul>
-<div class="btns"><a class="btn inverse" href="contact.html">{ic('chat')}無料で相談する</a><a class="btn inverse-o" href="service.html">サービスを見る</a></div>
+<div class="body"><h2>{np('まずは、|お話を|聞かせてください。')}</h2>
+<ul class="assure3"><li>{ic('check')}相談無料</li><li>{ic('check')}3営業日以内に返信</li><li>{ic('check')}しつこい営業なし</li></ul>
+<div class="btns"><a class="btn inverse" href="contact.html">{ic('chat')}無料で相談する</a></div>
 </div></div></div></section>
 '''
 
@@ -607,6 +584,11 @@ contact = phead('お問い合わせ', 'お問い合わせ', 'ご相談は無料�
 </form>
 <div class="done" id="cdone" hidden><span class="ok">{ic('check')}</span><h3>送信ありがとうございます。</h3><p>内容を確認のうえ、3営業日以内に担当者よりご連絡いたします。</p>{arrow_link('index.html', 'トップへ戻る')}</div>
 </div></div></section>
+
+<section class="sec tint"><div class="wrap">
+{sh('よくあるご質問', 'ご相談の前に、|よく聞かれること。', '', True)}
+<div class="faq">{faq_html}</div>
+</div></section>
 '''
 
 T = '｜HubHug（ハブハグ）'

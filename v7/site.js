@@ -59,6 +59,25 @@
     node.parentNode.replaceChild(frag,node);
   });
 
+  /* 表示アニメーション（.rv は画面に入ったら一度だけふわっと出す） */
+  var rvs=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io3=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io3.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(el){io3.observe(el)});
+  }else rvs.forEach(function(el){el.classList.add('in')});
+
+  /* 実績の数字をカウントアップ */
+  var counts=document.querySelectorAll('.count');
+  if(counts.length&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io4=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;io4.unobserve(e.target);
+      var el=e.target,to=+el.dataset.to,t0=0;
+      function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1400,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);});},{threshold:.5});
+    counts.forEach(function(el){el.textContent='0';io4.observe(el)});
+  }
+
   /* 追従ボタン：ヒーローを過ぎたら出す／CTA・フォームが見えたら隠す */
   var fab=document.getElementById('fab');
   if(fab){
@@ -69,7 +88,7 @@
       var io2=new IntersectionObserver(function(es){
         es.forEach(function(e){var i=seen.indexOf(e.target);if(e.isIntersecting&&i<0)seen.push(e.target);if(!e.isIntersecting&&i>=0)seen.splice(i,1);});
         fabState();});
-      document.querySelectorAll('main .btns,main .aud-act').forEach(function(el){io2.observe(el)});
+      document.querySelectorAll('main .btns,main .aud2').forEach(function(el){io2.observe(el)});
     }
     function fabState(){
       var past=scrollY>innerHeight*.5;
